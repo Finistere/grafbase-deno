@@ -1,0 +1,8 @@
+/.env
+/.envrc
+/target
+/build
+/.cargo
+/.deno
+/crates/app/assets
+

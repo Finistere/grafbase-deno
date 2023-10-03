@@ -1,0 +1,18 @@
+extend schema
+  @openapi(
+    name: "github",
+    url: "https://api.github.com/",
+    schema: "https://github.com/github/rest-api-description/raw/main/descriptions/api.github.com/api.github.com.json"
+    headers: [
+      { name: "Authorization", forward: "Authorization" },
+      { name: "X-GitHub-Api-Version", value: "2022-11-28" },
+    ]
+  )
+  @graphql(
+    name: "dummy",
+    url: "https://grafbase-example-nextjs-master-finistere.grafbase.app/graphql",
+    headers: [
+      { name: "x-api-key", value: "{{ env.API_KEY }}" }
+    ]
+  )
+

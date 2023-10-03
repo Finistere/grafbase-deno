@@ -1,0 +1,43 @@
+[package]
+name = "grafbase-deno-app"
+version = "0.1.0"
+edition = "2021"
+include = ["/src", "/assets/registry.json.zst"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+async-trait = "0.1"
+web-sys = { version = "0.3", features = [
+  "Headers",
+  "Request",
+  "RequestInit",
+  "RequestMode",
+  "Response",
+  "FormData",
+  "Blob",
+  "BlobPropertyBag",
+] }
+wasm-bindgen = "0.2" # workers requires 0.2.86
+wasm-bindgen-futures = "0.4"
+console_error_panic_hook = "0.1"
+serde = "1"
+serde_json = { workspace = true }
+serde-wasm-bindgen = "0.6"
+thiserror = "1"
+js-sys = "0.3"
+worker = "0.0.18"
+http = "0.2"
+futures-util = "0.3"
+ulid = "1"
+
+engine = { workspace = true }
+runtime = { git = "https://github.com/grafbase/grafbase", branch = "main" }
+common-types = { git = "https://github.com/grafbase/grafbase", branch = "main" }
+log = { git = "https://github.com/grafbase/grafbase", branch = "main", features = [
+  "with-worker",
+] }
+
+[profile.release]
+opt-level = "s"
